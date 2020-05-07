@@ -4,12 +4,21 @@ import 'antd/dist/antd.css'
 // import {v4 as uuid} from 'uuid'
 import store from './store/index'
 // import {INPUT_CHANGE, ADD_LIST, DEL_ITEM} from './store/actionTypes'
-import {inputChange, addList, delItem} from './store/actionCreators'
+// import axios from 'axios'
+import {inputChange, addList, delItem, testThunk, testSaga} from './store/actionCreators'
 
 export default class TodoList extends Component {
   constructor(props) {
     super(props)
     store.subscribe(this.storeChange)
+  }
+
+  componentDidMount() {
+    // const action = testThunk()
+    // store.dispatch(action)
+    const action = testSaga('payload')
+    store.dispatch(action)
+    
   }
   state = store.getState()
   

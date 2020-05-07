@@ -1,4 +1,4 @@
-import {INPUT_CHANGE, ADD_LIST, DEL_ITEM} from './actionTypes'
+import {INPUT_CHANGE, ADD_LIST, DEL_ITEM, GET_LIST} from './actionTypes'
 
 const defaultState = {
   list: [
@@ -32,6 +32,11 @@ const reducers = (state = defaultState, action) => {
     const newState = JSON.parse(JSON.stringify(state))
     newState.list.splice(action.payload,1)
     return newState
+  }
+
+  if(action.type === GET_LIST) {
+    console.log('thunk 中间件')
+    return state
   }
   return state
 }
